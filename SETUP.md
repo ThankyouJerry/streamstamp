@@ -5,7 +5,7 @@
 ### 데이터베이스 스키마 생성
 
 1. [Supabase Dashboard](https://supabase.com/dashboard)에 로그인
-2. 프로젝트 선택 (이미 생성된 프로젝트: `fppivexiawhmvgcddqxz`)
+2. 직접 생성한 프로젝트 선택
 3. 왼쪽 메뉴에서 **SQL Editor** 클릭
 4. **New Query** 클릭
 5. `supabase/schema.sql` 파일의 내용을 복사하여 붙여넣기
@@ -20,7 +20,7 @@
    - **APIs & Services** → **Credentials**
    - **Create Credentials** → **OAuth 2.0 Client ID**
    - Application type: **Web application**
-   - Authorized redirect URIs: `https://fppivexiawhmvgcddqxz.supabase.co/auth/v1/callback`
+   - Authorized redirect URIs: `https://<project-ref>.supabase.co/auth/v1/callback`
 4. Client ID와 Client Secret을 Supabase의 Google Provider 설정에 입력
 
 ## 2. YouTube API 설정 (선택사항)
