@@ -45,7 +45,7 @@ Google OAuth가 작동하려면 **3곳**에서 설정이 필요합니다:
    - **+ ADD URI** 클릭
    - 다음 URI 정확히 입력:
      ```
-     https://fppivexiawhmvgcddqxz.supabase.co/auth/v1/callback
+     https://<project-ref>.supabase.co/auth/v1/callback
      ```
    - ⚠️ **주의**: 끝에 슬래시(/) 없어야 함!
 7. **CREATE** 클릭
@@ -59,7 +59,7 @@ Google OAuth가 작동하려면 **3곳**에서 설정이 필요합니다:
 ## 2️⃣ Supabase 설정
 
 ### Step 1: Supabase Dashboard 접속
-1. [Supabase Dashboard](https://supabase.com/dashboard/project/fppivexiawhmvgcddqxz/auth/providers) 접속
+1. 본인의 Supabase 프로젝트 Dashboard에서 `Authentication > Providers`로 이동
 2. **Authentication** → **Providers** 클릭
 
 ### Step 2: Google Provider 설정
@@ -112,7 +112,7 @@ Google OAuth가 작동하려면 **3곳**에서 설정이 필요합니다:
 1. Google Cloud Console → Credentials 확인
 2. Authorized redirect URIs에 정확히 다음이 있는지 확인:
    ```
-   https://fppivexiawhmvgcddqxz.supabase.co/auth/v1/callback
+   https://<project-ref>.supabase.co/auth/v1/callback
    ```
 3. 끝에 슬래시(/) 없는지 확인
 4. 수정 후 **Save** 클릭
@@ -144,7 +144,7 @@ Google OAuth가 작동하려면 **3곳**에서 설정이 필요합니다:
 - [ ] OAuth 동의 화면 구성 완료
 - [ ] 테스트 사용자에 본인 이메일 추가
 - [ ] OAuth 2.0 Client ID 생성됨
-- [ ] Redirect URI: `https://fppivexiawhmvgcddqxz.supabase.co/auth/v1/callback`
+- [ ] Redirect URI: `https://<project-ref>.supabase.co/auth/v1/callback`
 - [ ] Client ID와 Secret 복사함
 
 ### Supabase

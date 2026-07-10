@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import VideoPlayer from '@/components/VideoPlayer';
 import { fetchVideoMetadata, VideoMetadata } from '@/services/metadata';
 import { LogIn, AlertCircle } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
-export default function GuestEditorPage() {
+function GuestEditorContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const supabase = createClient();
@@ -116,5 +116,13 @@ export default function GuestEditorPage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function GuestEditorPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">영상 정보 로딩 중...</div>}>
+            <GuestEditorContent />
+        </Suspense>
     );
 }
