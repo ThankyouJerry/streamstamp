@@ -18,9 +18,17 @@ jobs:
           node-version: "20"
       - name: Validate extension
         run: |
+          node --check extension/shared.js
           node --check extension/content.js
           node --check extension/popup.js
-          node tests/validate-extension.mjs
+          npm run test:extension
+          npm run build:extension
+      - uses: actions/upload-artifact@v4
+        with:
+          name: StreamStamp-extension
+          path: |
+            dist/StreamStamp-*.zip
+            dist/SHA256SUMS.txt
 
   web-prototype:
     runs-on: ubuntu-latest

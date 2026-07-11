@@ -6,7 +6,7 @@
 StreamStamp - YouTube Timestamp Manager
 
 ### Summary (132 characters max)
-YouTube 영상에서 타임스탬프를 쉽게 기록하고 관리하세요. 완전히 오프라인으로 작동합니다.
+YouTube의 중요한 순간을 메모와 함께 저장하고, 검색·백업·마크다운 내보내기로 관리하세요.
 
 ### Description
 
@@ -28,6 +28,8 @@ StreamStamp는 YouTube 영상을 시청하면서 중요한 순간을 타임스�
 
 📋 **효율적인 관리**
 - 모든 저장된 영상을 한눈에 확인
+- 영상 제목과 메모 검색
+- 저장한 메모 수정
 - 타임스탬프 클릭으로 해당 시간으로 바로 이동
 - 개별 타임스탬프 또는 전체 삭제 가능
 
@@ -36,17 +38,21 @@ StreamStamp는 YouTube 영상을 시청하면서 중요한 순간을 타임스�
 - 노트, 블로그, 문서에 바로 붙여넣기
 - 공유와 백업이 간편함
 
-🔒 **완벽한 프라이버시**
+💾 **JSON 백업과 복원**
+- 전체 타임스탬프와 메모를 JSON 파일로 저장
+- 기존 기록을 지우지 않고 백업 데이터 병합
+
+🔒 **로컬 중심의 개인정보 보호**
 - 모든 데이터는 로컬에만 저장
 - 서버 전송 없음
-- 완전히 오프라인으로 작동
+- 기록 데이터는 Chrome 로컬 저장소에만 보관
 - 개인정보 수집 없음
 
 **💡 사용 방법**
 
 1. YouTube 영상 페이지로 이동
-2. 오른쪽 하단의 ⏱️ 버튼 클릭
-3. 메모 입력 후 "타임스탬프 추가" 클릭
+2. 화면의 StreamStamp `S` 버튼 클릭
+3. 메모 입력 후 현재 시간이 표시된 "저장" 버튼 클릭
 4. 저장된 타임스탬프는 확장 프로그램 아이콘에서 확인
 
 **🎓 이런 분들께 추천합니다**
@@ -61,7 +67,7 @@ StreamStamp는 YouTube 영상을 시청하면서 중요한 순간을 타임스�
 ✅ 완전 무료
 ✅ 광고 없음
 ✅ 로그인 불필요
-✅ 오프라인 작동
+✅ 별도 계정과 동기화 서버 불필요
 ✅ 데이터 수집 없음
 ✅ 가볍고 빠름
 
@@ -104,10 +110,10 @@ StreamStamp는 YouTube 영상을 시청하면서 중요한 순간을 타임스�
 - **Marquee**: 1400x560 (선택사항)
 
 ### Support URL
-https://github.com/[your-username]/streamstamp (GitHub 저장소 링크)
+https://github.com/ThankyouJerry/streamstamp
 
 ### Homepage URL
-https://github.com/[your-username]/streamstamp
+https://github.com/ThankyouJerry/streamstamp
 
 ---
 
@@ -127,10 +133,10 @@ StreamStamp's single purpose is to help users create and manage timestamps for Y
 Used to save user-created timestamps and UI preferences locally on the user's device. No data is transmitted to external servers.
 
 ### ActiveTab Permission
-Used to access the URL of the current tab when the user opens the extension popup. This allows the extension to determine if the user is currently watching a YouTube video and provide relevant options (e.g., "Record current video").
+Used to access the URL of the current tab only when the user opens the extension popup. This allows the extension to determine whether the current tab is a YouTube video and send a request to open the timestamp panel on that tab.
 
 ### Content Scripts
-The extension uses declarative content scripts to inject the timestamp management UI (floating button and panel) specifically into YouTube video pages (`*://*.youtube.com/watch*`). This is the core functionality of the extension.
+The extension uses declarative content scripts on `*://*.youtube.com/*` so the timestamp UI remains available after YouTube's client-side navigation. The script renders the floating button and panel only when the current URL is a valid `/watch?v=...` video page. This is the core functionality of the extension.
 
 ---
 
@@ -150,8 +156,8 @@ The extension uses declarative content scripts to inject the timestamp managemen
 
 1. Install the extension
 2. Navigate to any YouTube video (e.g., https://www.youtube.com/watch?v=dQw4w9WgXcQ)
-3. Click the ⏱️ floating button in the bottom-right corner
-4. Enter a memo and click "타임스탬프 추가"
+3. Click the floating `S` button in the bottom-right corner
+4. Enter a memo and click the time-labelled "저장" button
 5. Verify the timestamp appears in the list
 6. Click the extension icon to see all saved videos
 7. Test the markdown export feature

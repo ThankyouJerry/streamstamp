@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StreamStamp Store Assets</title>
+  <style>
+    :root { --ink:#101923; --navy:#192b3c; --coral:#f2684b; --cream:#fff8ed; --line:#d9e0df; --mint:#b9e2d8; --muted:#65727e; }
+    * { box-sizing:border-box; }
+    html,body { width:100%; height:100%; margin:0; overflow:hidden; }
+    body { background:var(--ink); color:var(--cream); font-family:"Apple SD Gothic Neo",Pretendard,"Noto Sans KR",sans-serif; }
+    .slide { display:none; position:absolute; inset:0; width:1280px; height:800px; overflow:hidden; }
+    .slide:target { display:block; }
+    .grid { position:absolute; inset:0; opacity:.075; background-image:linear-gradient(rgba(255,255,255,.42) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.42) 1px,transparent 1px); background-size:40px 40px; }
+    .eyebrow { color:var(--coral); font-size:14px; font-weight:900; letter-spacing:.18em; }
+    h1 { margin:16px 0; font-size:58px; line-height:1.05; letter-spacing:-.055em; word-break:keep-all; }
+    p { margin:0; color:#aeb9c0; font-size:20px; font-weight:650; line-height:1.55; word-break:keep-all; }
+    .brand { display:flex; align-items:center; gap:12px; font-size:20px; font-weight:900; }
+    .mark { display:grid; width:50px; height:50px; place-items:center; border-radius:16px; background:var(--coral); color:white; font:900 25px Georgia,serif; box-shadow:0 10px 28px rgba(242,104,75,.3); }
+    #moment .copy { position:absolute; z-index:3; top:55px; left:60px; width:480px; }
+    #moment .shot { position:absolute; z-index:2; right:0; top:96px; width:840px; height:610px; object-fit:cover; object-position:right top; border-radius:28px 0 0 28px; border:1px solid rgba(255,255,255,.15); box-shadow:0 32px 85px rgba(0,0,0,.48); }
+    #moment .accent { position:absolute; width:310px; height:310px; border-radius:50%; right:48px; top:25px; background:var(--coral); opacity:.86; }
+    .feature-list { display:grid; gap:12px; margin-top:36px; }
+    .feature { display:flex; gap:11px; align-items:center; font-size:15px; font-weight:800; color:#d9e2e6; }
+    .feature b { display:grid; width:27px; height:27px; place-items:center; border-radius:9px; background:rgba(185,226,216,.15); color:var(--mint); }
+    #library { background:var(--cream); color:var(--navy); }
+    #library .grid { opacity:.055; background-image:linear-gradient(var(--navy) 1px,transparent 1px),linear-gradient(90deg,var(--navy) 1px,transparent 1px); }
+    #library .copy { position:absolute; top:58px; left:62px; width:460px; z-index:2; }
+    #library p { color:var(--muted); }
+    .popup { position:absolute; z-index:2; right:70px; top:58px; width:585px; height:684px; border-radius:30px; overflow:hidden; background:white; border:1px solid #dce2e0; box-shadow:0 30px 70px rgba(25,43,60,.18); }
+    .popup-head { padding:28px 30px 22px; background:var(--navy); color:white; }
+    .popup-head .brand { font-size:19px; }
+    .popup-head .mark { width:42px; height:42px; border-radius:13px; font-size:21px; }
+    .stats { display:flex; gap:9px; margin-top:20px; }
+    .stat { flex:1; padding:13px 14px; border-radius:14px; background:rgba(255,255,255,.08); }
+    .stat span,.stat strong { display:block; }
+    .stat span { font-size:11px; color:#aebbc5; }
+    .stat strong { margin-top:3px; font-size:19px; }
+    .popup-body { padding:20px 24px; color:var(--navy); }
+    .search { width:100%; padding:14px 17px; border:1px solid #dce2e0; border-radius:14px; color:#87939a; font-size:14px; }
+    .video-card { margin-top:14px; padding:16px; border:1px solid #e2e7e5; border-radius:17px; background:#fffdf9; }
+    .video-card h3 { margin:0; font-size:15px; letter-spacing:-.02em; }
+    .stamp { display:grid; grid-template-columns:62px 1fr; gap:12px; margin-top:12px; padding-top:12px; border-top:1px solid #e9ece9; align-items:center; }
+    .stamp time { color:var(--coral); font-size:14px; font-weight:900; }
+    .stamp span { color:#64727a; font-size:13px; }
+    .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:35px; }
+    .chip { padding:9px 12px; border-radius:999px; border:1px solid rgba(25,43,60,.16); font-size:13px; font-weight:800; }
+    #privacy { background:var(--navy); }
+    #privacy .copy { position:absolute; z-index:2; top:72px; left:70px; width:560px; }
+    .privacy-card { position:absolute; z-index:2; top:85px; right:70px; width:490px; padding:32px; border-radius:30px; background:var(--cream); color:var(--navy); box-shadow:0 28px 68px rgba(0,0,0,.25); }
+    .privacy-row { display:grid; grid-template-columns:58px 1fr; gap:16px; align-items:center; padding:18px 0; border-bottom:1px solid var(--line); }
+    .privacy-row:last-child { border-bottom:0; }
+    .privacy-row i { display:grid; width:58px; height:58px; place-items:center; border-radius:18px; background:var(--navy); color:var(--mint); font-style:normal; font-size:22px; font-weight:900; }
+    .privacy-row strong,.privacy-row span { display:block; }
+    .privacy-row strong { font-size:18px; }
+    .privacy-row span { margin-top:5px; color:#65747d; font-size:13px; line-height:1.45; }
+    #privacy .brand { position:absolute; left:70px; bottom:62px; z-index:2; }
+  </style>
+</head>
+<body>
+  <section id="moment" class="slide">
+    <div class="grid"></div><div class="accent"></div>
+    <div class="copy"><div class="brand"><span class="mark">S</span>StreamStamp</div><div class="eyebrow" style="margin-top:70px">YOUTUBE MOMENT NOTES</div><h1>보고 있던 순간을<br />놓치지 마세요.</h1><p>현재 재생 시점에 메모를 남기고<br />클릭 한 번으로 다시 돌아갑니다.</p><div class="feature-list"><div class="feature"><b>1</b>영상별 타임스탬프 자동 정리</div><div class="feature"><b>2</b>메모 수정·삭제와 마크다운 복사</div><div class="feature"><b>3</b>YouTube 내부 이동도 자동 감지</div></div></div>
+    <img class="shot" src="streamstamp-youtube-raw.png?v=2" alt="YouTube에서 동작하는 StreamStamp" />
+  </section>
+  <section id="library" class="slide">
+    <div class="grid"></div>
+    <div class="copy"><div class="eyebrow">YOUR MOMENT LIBRARY</div><h1>영상이 많아져도<br />빠르게 찾습니다.</h1><p>팝업에서 영상과 메모를 검색하고<br />백업 파일로 내보내거나 다시 가져오세요.</p><div class="chips"><span class="chip">영상·메모 검색</span><span class="chip">JSON 백업</span><span class="chip">중복 없는 병합</span><span class="chip">시간순 정렬</span></div></div>
+    <div class="popup"><div class="popup-head"><div class="brand"><span class="mark">S</span><span>StreamStamp<br /><small style="color:#9fb0bc;letter-spacing:.12em">MOMENT LIBRARY</small></span></div><div class="stats"><div class="stat"><span>저장한 영상</span><strong>2</strong></div><div class="stat"><span>전체 타임스탬프</span><strong>4</strong></div></div></div><div class="popup-body"><div class="search">영상 제목 또는 메모 검색</div><div class="video-card"><h3>1.단 오리고기를 들어 [ ACAXIA - 포포포포 ]</h3><div class="stamp"><time>0:53</time><span>핵심 장면 - 편집 후보</span></div><div class="stamp"><time>1:18</time><span>다시 볼 포인트</span></div></div><div class="video-card"><h3>Rick Astley - Never Gonna Give You Up</h3><div class="stamp"><time>0:36</time><span>인트로 시작</span></div><div class="stamp"><time>1:05</time><span>후렴 구간</span></div></div></div></div>
+  </section>
+  <section id="privacy" class="slide">
+    <div class="grid"></div>
+    <div class="copy"><div class="eyebrow">LOCAL FIRST</div><h1>계정 없이,<br />외부 서버 없이.</h1><p>타임스탬프와 메모는 현재 Chrome 프로필의 로컬 저장소에만 보관됩니다.</p></div>
+    <div class="privacy-card"><div class="privacy-row"><i>1</i><div><strong>외부 전송 없음</strong><span>분석 서버나 사용자 추적 코드를 사용하지 않습니다.</span></div></div><div class="privacy-row"><i>2</i><div><strong>최소 권한</strong><span>로컬 저장과 현재 탭 연동에 필요한 권한만 요청합니다.</span></div></div><div class="privacy-row"><i>3</i><div><strong>직접 관리하는 백업</strong><span>사용자가 원할 때 JSON으로 내보내고 다시 가져올 수 있습니다.</span></div></div></div>
+    <div class="brand"><span class="mark">S</span>StreamStamp</div>
+  </section>
+</body>
+</html>

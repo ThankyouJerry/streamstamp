@@ -1,95 +1,63 @@
-# StreamStamp Privacy Policy
+# StreamStamp 개인정보 처리방침
 
-**Last Updated: November 25, 2024**
+**최종 업데이트: 2026년 7월 11일**
 
-## Overview
+StreamStamp는 YouTube 영상의 타임스탬프와 메모를 저장하는 Chrome 확장 프로그램입니다.
+개인정보를 수집하거나 외부 서버로 전송하지 않습니다.
 
-StreamStamp is a Chrome extension that helps you create and manage timestamps for YouTube videos. We are committed to protecting your privacy.
+## 기기에 저장하는 정보
 
-## Data Collection
+StreamStamp는 다음 정보를 사용자의 Chrome 로컬 저장소에 보관합니다.
 
-**We do NOT collect any personal data.**
+- YouTube 영상 ID와 제목
+- 사용자가 작성한 타임스탬프, 메모와 생성 시각
+- 플로팅 버튼과 패널의 위치 설정
 
-### What Data is Stored Locally
+이 데이터는 `chrome.storage.local`에 저장되며 StreamStamp 개발자 또는 제3자에게 전송되지
+않습니다.
 
-StreamStamp stores the following data **locally on your device only**:
+## 사용하는 권한
 
-- YouTube video IDs
-- Video titles
-- Timestamps you create (time and memo)
-- UI position preferences (floating button and panel positions)
+| 권한 | 목적 |
+| --- | --- |
+| `storage` | 사용자의 타임스탬프, 메모와 UI 설정을 로컬에 저장합니다. |
+| `activeTab` | 사용자가 확장 프로그램 팝업을 열었을 때 현재 탭이 YouTube 영상인지 확인합니다. |
+| YouTube 콘텐츠 스크립트 | YouTube 페이지에 타임스탬프 기록 UI를 표시하고 사용자가 선택한 시점으로 이동합니다. |
 
-### Where Data is Stored
+`activeTab` 접근은 사용자가 확장 프로그램 아이콘을 누른 현재 탭에 한정됩니다. 콘텐츠
+스크립트는 `youtube.com`에서만 실행됩니다.
 
-All data is stored in:
-- **Chrome's local storage** on your device
-- **localStorage** for UI preferences
+## 수집하거나 전송하지 않는 정보
 
-This data:
-- ✅ Stays on your device
-- ✅ Is never transmitted to any server
-- ✅ Is never shared with third parties
-- ✅ Is completely private to you
+StreamStamp는 다음 정보를 수집, 판매, 공유 또는 전송하지 않습니다.
 
-## Data Transmission
+- Google 또는 YouTube 로그인 정보와 쿠키
+- 전체 방문 기록과 검색 기록
+- 사용 통계, 분석 이벤트와 광고 식별자
+- 사용자가 저장한 메모와 타임스탬프
 
-**We do NOT transmit any data to external servers.**
+외부 API, 분석 SDK, 광고 네트워크 또는 원격 실행 코드를 사용하지 않습니다.
 
-StreamStamp operates entirely offline and does not:
-- Send data to any remote servers
-- Track your browsing activity
-- Collect analytics or usage statistics
-- Share data with third parties
+## 데이터 관리와 삭제
 
-## Permissions Used
+- 개별 타임스탬프와 영상별 전체 기록을 확장 프로그램에서 삭제할 수 있습니다.
+- JSON 백업으로 데이터를 내보내거나 기존 기록과 병합 복원할 수 있습니다.
+- 확장 프로그램을 삭제하면 Chrome이 해당 확장 프로그램의 로컬 데이터를 삭제합니다.
 
-### Storage Permission
-- **Purpose**: To save your timestamps and UI preferences locally
-- **Scope**: Only used for local data storage on your device
+## 아동의 개인정보
 
-### ActiveTab Permission
-- **Purpose**: To check if you are currently on a YouTube video page when you open the extension popup
-- **Scope**: Grants temporary access to the current tab only when you interact with the extension
+StreamStamp는 사용자의 연령을 확인하거나 아동을 포함한 어떤 사용자에게서도 개인정보를
+의도적으로 수집하지 않습니다.
 
-### Content Scripts
-- **Purpose**: To display the floating button and timestamp panel
-- **Scope**: Automatically injected only on YouTube video pages (`youtube.com/watch*`)
+## 변경 사항과 문의
 
-## Data Deletion
+정책이 변경되면 이 문서의 최종 업데이트 날짜와 GitHub 저장소의 변경 기록에 반영합니다.
+문의와 오류 제보는 [GitHub Issues](https://github.com/ThankyouJerry/streamstamp/issues)를 이용해
+주세요.
 
-You can delete all your data at any time:
+## Chrome Web Store Limited Use
 
-1. **Delete individual timestamps**: Click the × button next to each timestamp
-2. **Delete all timestamps for a video**: Click "전체 삭제" in the panel
-3. **Delete a video and all its timestamps**: Click the × button in the extension popup
-4. **Delete all data**: Uninstall the extension from `chrome://extensions/`
-
-## Third-Party Services
-
-StreamStamp does not use any third-party services, analytics, or tracking tools.
-
-## Changes to This Policy
-
-We may update this privacy policy from time to time. Any changes will be reflected in the "Last Updated" date above.
-
-## Contact
-
-If you have any questions about this privacy policy, please contact us through the Chrome Web Store support page.
-
-## Your Rights
-
-You have the right to:
-- Know what data is stored (all data is visible in the extension popup)
-- Delete your data at any time
-- Use the extension without creating an account
-
-## Children's Privacy
-
-StreamStamp does not knowingly collect any information from children under 13. The extension does not collect any personal information from any users.
-
-## Compliance
-
-This extension complies with:
-- Chrome Web Store Developer Program Policies
-- General Data Protection Regulation (GDPR)
-- California Consumer Privacy Act (CCPA)
+StreamStamp의 사용자 데이터 사용은 Chrome Web Store 사용자 데이터 정책의 Limited Use
+요건을 준수합니다. 사용자 데이터는 확장 프로그램의 단일 목적인 YouTube 타임스탬프 기록과
+관리 기능을 제공하는 데만 사용되며, 광고·신용 평가·제3자 판매 또는 사람의 열람에 사용되지
+않습니다.

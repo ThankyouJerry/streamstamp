@@ -10,7 +10,7 @@
 1. GitHub 저장소 생성
 2. `PRIVACY_POLICY.md` 파일 업로드
 3. Settings → Pages에서 GitHub Pages 활성화
-4. URL 예시: `https://[your-username].github.io/streamstamp/PRIVACY_POLICY.html`
+4. 공개 URL: `https://github.com/ThankyouJerry/streamstamp/blob/main/extension/PRIVACY_POLICY.md`
 
 **옵션 B: 간단한 호스팅 사용**
 - Google Sites, Notion 등에 개인정보처리방침 게시
